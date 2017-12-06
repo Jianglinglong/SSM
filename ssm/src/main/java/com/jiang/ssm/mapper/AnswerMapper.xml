@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiang.ssm.mapper.AnswerMapper" >
+  <resultMap id="BaseResultMap" type="com.jiang.ssm.bean.Answer" >
+    <id column="answer_id" property="answerId" jdbcType="INTEGER" />
+    <result column="stu_id" property="stuId" jdbcType="INTEGER" />
+    <result column="exam_id" property="examId" jdbcType="INTEGER" />
+    <result column="single_choice_json" property="singleChoiceJson" jdbcType="VARCHAR" />
+    <result column="mul_choice_json" property="mulChoiceJson" jdbcType="VARCHAR" />
+    <result column="blank_json" property="blankJson" jdbcType="VARCHAR" />
+    <result column="judge_json" property="judgeJson" jdbcType="VARCHAR" />
+    <result column="sub_json" property="subJson" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    answer_id, stu_id, exam_id, single_choice_json, mul_choice_json, blank_json, judge_json, 
+    sub_json
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jiang.ssm.bean.AnswerExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_answer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_answer
+    where answer_id = #{answerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_answer
+    where answer_id = #{answerId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jiang.ssm.bean.AnswerExample" >
+    delete from t_answer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jiang.ssm.bean.Answer" >
+    <selectKey resultType="java.lang.Integer" keyProperty="answerId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_answer (stu_id, exam_id, single_choice_json, 
+      mul_choice_json, blank_json, judge_json, 
+      sub_json)
+    values (#{stuId,jdbcType=INTEGER}, #{examId,jdbcType=INTEGER}, #{singleChoiceJson,jdbcType=VARCHAR}, 
+      #{mulChoiceJson,jdbcType=VARCHAR}, #{blankJson,jdbcType=VARCHAR}, #{judgeJson,jdbcType=VARCHAR}, 
+      #{subJson,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiang.ssm.bean.Answer" >
+    <selectKey resultType="java.lang.Integer" keyProperty="answerId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_answer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stuId != null" >
+        stu_id,
+      </if>
+      <if test="examId != null" >
+        exam_id,
+      </if>
+      <if test="singleChoiceJson != null" >
+        single_choice_json,
+      </if>
+      <if test="mulChoiceJson != null" >
+        mul_choice_json,
+      </if>
+      <if test="blankJson != null" >
+        blank_json,
+      </if>
+      <if test="judgeJson != null" >
+        judge_json,
+      </if>
+      <if test="subJson != null" >
+        sub_json,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stuId != null" >
+        #{stuId,jdbcType=INTEGER},
+      </if>
+      <if test="examId != null" >
+        #{examId,jdbcType=INTEGER},
+      </if>
+      <if test="singleChoiceJson != null" >
+        #{singleChoiceJson,jdbcType=VARCHAR},
+      </if>
+      <if test="mulChoiceJson != null" >
+        #{mulChoiceJson,jdbcType=VARCHAR},
+      </if>
+      <if test="blankJson != null" >
+        #{blankJson,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeJson != null" >
+        #{judgeJson,jdbcType=VARCHAR},
+      </if>
+      <if test="subJson != null" >
+        #{subJson,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jiang.ssm.bean.AnswerExample" resultType="java.lang.Integer" >
+    select count(*) from t_answer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_answer
+    <set >
+      <if test="record.answerId != null" >
+        answer_id = #{record.answerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.stuId != null" >
+        stu_id = #{record.stuId,jdbcType=INTEGER},
+      </if>
+      <if test="record.examId != null" >
+        exam_id = #{record.examId,jdbcType=INTEGER},
+      </if>
+      <if test="record.singleChoiceJson != null" >
+        single_choice_json = #{record.singleChoiceJson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mulChoiceJson != null" >
+        mul_choice_json = #{record.mulChoiceJson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.blankJson != null" >
+        blank_json = #{record.blankJson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.judgeJson != null" >
+        judge_json = #{record.judgeJson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subJson != null" >
+        sub_json = #{record.subJson,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_answer
+    set answer_id = #{record.answerId,jdbcType=INTEGER},
+      stu_id = #{record.stuId,jdbcType=INTEGER},
+      exam_id = #{record.examId,jdbcType=INTEGER},
+      single_choice_json = #{record.singleChoiceJson,jdbcType=VARCHAR},
+      mul_choice_json = #{record.mulChoiceJson,jdbcType=VARCHAR},
+      blank_json = #{record.blankJson,jdbcType=VARCHAR},
+      judge_json = #{record.judgeJson,jdbcType=VARCHAR},
+      sub_json = #{record.subJson,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiang.ssm.bean.Answer" >
+    update t_answer
+    <set >
+      <if test="stuId != null" >
+        stu_id = #{stuId,jdbcType=INTEGER},
+      </if>
+      <if test="examId != null" >
+        exam_id = #{examId,jdbcType=INTEGER},
+      </if>
+      <if test="singleChoiceJson != null" >
+        single_choice_json = #{singleChoiceJson,jdbcType=VARCHAR},
+      </if>
+      <if test="mulChoiceJson != null" >
+        mul_choice_json = #{mulChoiceJson,jdbcType=VARCHAR},
+      </if>
+      <if test="blankJson != null" >
+        blank_json = #{blankJson,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeJson != null" >
+        judge_json = #{judgeJson,jdbcType=VARCHAR},
+      </if>
+      <if test="subJson != null" >
+        sub_json = #{subJson,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where answer_id = #{answerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiang.ssm.bean.Answer" >
+    update t_answer
+    set stu_id = #{stuId,jdbcType=INTEGER},
+      exam_id = #{examId,jdbcType=INTEGER},
+      single_choice_json = #{singleChoiceJson,jdbcType=VARCHAR},
+      mul_choice_json = #{mulChoiceJson,jdbcType=VARCHAR},
+      blank_json = #{blankJson,jdbcType=VARCHAR},
+      judge_json = #{judgeJson,jdbcType=VARCHAR},
+      sub_json = #{subJson,jdbcType=VARCHAR}
+    where answer_id = #{answerId,jdbcType=INTEGER}
+  </update>
+</mapper>

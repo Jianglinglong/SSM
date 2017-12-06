@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiang.ssm.mapper.TeacherMapper" >
+  <resultMap id="BaseResultMap" type="com.jiang.ssm.bean.Teacher" >
+    <id column="tea_id" property="teaId" jdbcType="INTEGER" />
+    <result column="tea_name" property="teaName" jdbcType="VARCHAR" />
+    <result column="tea_account" property="teaAccount" jdbcType="VARCHAR" />
+    <result column="tea_password" property="teaPassword" jdbcType="VARCHAR" />
+    <result column="tea_remark" property="teaRemark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    tea_id, tea_name, tea_account, tea_password, tea_remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jiang.ssm.bean.TeacherExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_teacher
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_teacher
+    where tea_id = #{teaId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_teacher
+    where tea_id = #{teaId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jiang.ssm.bean.TeacherExample" >
+    delete from t_teacher
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jiang.ssm.bean.Teacher" >
+    <selectKey resultType="java.lang.Integer" keyProperty="teaId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_teacher (tea_name, tea_account, tea_password, 
+      tea_remark)
+    values (#{teaName,jdbcType=VARCHAR}, #{teaAccount,jdbcType=VARCHAR}, #{teaPassword,jdbcType=VARCHAR}, 
+      #{teaRemark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiang.ssm.bean.Teacher" >
+    <selectKey resultType="java.lang.Integer" keyProperty="teaId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_teacher
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="teaName != null" >
+        tea_name,
+      </if>
+      <if test="teaAccount != null" >
+        tea_account,
+      </if>
+      <if test="teaPassword != null" >
+        tea_password,
+      </if>
+      <if test="teaRemark != null" >
+        tea_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="teaName != null" >
+        #{teaName,jdbcType=VARCHAR},
+      </if>
+      <if test="teaAccount != null" >
+        #{teaAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="teaPassword != null" >
+        #{teaPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="teaRemark != null" >
+        #{teaRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jiang.ssm.bean.TeacherExample" resultType="java.lang.Integer" >
+    select count(*) from t_teacher
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_teacher
+    <set >
+      <if test="record.teaId != null" >
+        tea_id = #{record.teaId,jdbcType=INTEGER},
+      </if>
+      <if test="record.teaName != null" >
+        tea_name = #{record.teaName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teaAccount != null" >
+        tea_account = #{record.teaAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teaPassword != null" >
+        tea_password = #{record.teaPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teaRemark != null" >
+        tea_remark = #{record.teaRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_teacher
+    set tea_id = #{record.teaId,jdbcType=INTEGER},
+      tea_name = #{record.teaName,jdbcType=VARCHAR},
+      tea_account = #{record.teaAccount,jdbcType=VARCHAR},
+      tea_password = #{record.teaPassword,jdbcType=VARCHAR},
+      tea_remark = #{record.teaRemark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiang.ssm.bean.Teacher" >
+    update t_teacher
+    <set >
+      <if test="teaName != null" >
+        tea_name = #{teaName,jdbcType=VARCHAR},
+      </if>
+      <if test="teaAccount != null" >
+        tea_account = #{teaAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="teaPassword != null" >
+        tea_password = #{teaPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="teaRemark != null" >
+        tea_remark = #{teaRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tea_id = #{teaId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiang.ssm.bean.Teacher" >
+    update t_teacher
+    set tea_name = #{teaName,jdbcType=VARCHAR},
+      tea_account = #{teaAccount,jdbcType=VARCHAR},
+      tea_password = #{teaPassword,jdbcType=VARCHAR},
+      tea_remark = #{teaRemark,jdbcType=VARCHAR}
+    where tea_id = #{teaId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiang.ssm.mapper.PaperRuleMapper" >
+  <resultMap id="BaseResultMap" type="com.jiang.ssm.bean.PaperRule" >
+    <id column="rule_id" property="ruleId" jdbcType="INTEGER" />
+    <result column="course_id" property="courseId" jdbcType="INTEGER" />
+    <result column="single_choice_num" property="singleChoiceNum" jdbcType="INTEGER" />
+    <result column="single_choice_score" property="singleChoiceScore" jdbcType="DOUBLE" />
+    <result column="mul_choice_num" property="mulChoiceNum" jdbcType="INTEGER" />
+    <result column="mul_choice_score" property="mulChoiceScore" jdbcType="DOUBLE" />
+    <result column="fill_blank_num" property="fillBlankNum" jdbcType="INTEGER" />
+    <result column="fill_blank_score" property="fillBlankScore" jdbcType="DOUBLE" />
+    <result column="judge_num" property="judgeNum" jdbcType="INTEGER" />
+    <result column="judge_score" property="judgeScore" jdbcType="DOUBLE" />
+    <result column="sub_question_num" property="subQuestionNum" jdbcType="INTEGER" />
+    <result column="sub_question_score" property="subQuestionScore" jdbcType="DOUBLE" />
+    <result column="paper_score" property="paperScore" jdbcType="INTEGER" />
+    <result column="rule_type" property="ruleType" jdbcType="BIGINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.jiang.ssm.bean.PaperRule" extends="BaseResultMap" >
+    <result column="single_choice_ck" property="singleChoiceCk" jdbcType="LONGVARCHAR" />
+    <result column="mul_choice_ck" property="mulChoiceCk" jdbcType="LONGVARCHAR" />
+    <result column="fill_blank_ck" property="fillBlankCk" jdbcType="LONGVARCHAR" />
+    <result column="judge_ck" property="judgeCk" jdbcType="LONGVARCHAR" />
+    <result column="sub_question_ck" property="subQuestionCk" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    rule_id, course_id, single_choice_num, single_choice_score, mul_choice_num, mul_choice_score, 
+    fill_blank_num, fill_blank_score, judge_num, judge_score, sub_question_num, sub_question_score, 
+    paper_score, rule_type
+  </sql>
+  <sql id="Blob_Column_List" >
+    single_choice_ck, mul_choice_ck, fill_blank_ck, judge_ck, sub_question_ck
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.jiang.ssm.bean.PaperRuleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_paper_rule
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jiang.ssm.bean.PaperRuleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_paper_rule
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_paper_rule
+    where rule_id = #{ruleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_paper_rule
+    where rule_id = #{ruleId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jiang.ssm.bean.PaperRuleExample" >
+    delete from t_paper_rule
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jiang.ssm.bean.PaperRule" >
+    <selectKey resultType="java.lang.Integer" keyProperty="ruleId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_paper_rule (course_id, single_choice_num, single_choice_score, 
+      mul_choice_num, mul_choice_score, fill_blank_num, 
+      fill_blank_score, judge_num, judge_score, 
+      sub_question_num, sub_question_score, paper_score, 
+      rule_type, single_choice_ck, mul_choice_ck, 
+      fill_blank_ck, judge_ck, sub_question_ck
+      )
+    values (#{courseId,jdbcType=INTEGER}, #{singleChoiceNum,jdbcType=INTEGER}, #{singleChoiceScore,jdbcType=DOUBLE}, 
+      #{mulChoiceNum,jdbcType=INTEGER}, #{mulChoiceScore,jdbcType=DOUBLE}, #{fillBlankNum,jdbcType=INTEGER}, 
+      #{fillBlankScore,jdbcType=DOUBLE}, #{judgeNum,jdbcType=INTEGER}, #{judgeScore,jdbcType=DOUBLE}, 
+      #{subQuestionNum,jdbcType=INTEGER}, #{subQuestionScore,jdbcType=DOUBLE}, #{paperScore,jdbcType=INTEGER}, 
+      #{ruleType,jdbcType=BIGINT}, #{singleChoiceCk,jdbcType=LONGVARCHAR}, #{mulChoiceCk,jdbcType=LONGVARCHAR}, 
+      #{fillBlankCk,jdbcType=LONGVARCHAR}, #{judgeCk,jdbcType=LONGVARCHAR}, #{subQuestionCk,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiang.ssm.bean.PaperRule" >
+    <selectKey resultType="java.lang.Integer" keyProperty="ruleId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_paper_rule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseId != null" >
+        course_id,
+      </if>
+      <if test="singleChoiceNum != null" >
+        single_choice_num,
+      </if>
+      <if test="singleChoiceScore != null" >
+        single_choice_score,
+      </if>
+      <if test="mulChoiceNum != null" >
+        mul_choice_num,
+      </if>
+      <if test="mulChoiceScore != null" >
+        mul_choice_score,
+      </if>
+      <if test="fillBlankNum != null" >
+        fill_blank_num,
+      </if>
+      <if test="fillBlankScore != null" >
+        fill_blank_score,
+      </if>
+      <if test="judgeNum != null" >
+        judge_num,
+      </if>
+      <if test="judgeScore != null" >
+        judge_score,
+      </if>
+      <if test="subQuestionNum != null" >
+        sub_question_num,
+      </if>
+      <if test="subQuestionScore != null" >
+        sub_question_score,
+      </if>
+      <if test="paperScore != null" >
+        paper_score,
+      </if>
+      <if test="ruleType != null" >
+        rule_type,
+      </if>
+      <if test="singleChoiceCk != null" >
+        single_choice_ck,
+      </if>
+      <if test="mulChoiceCk != null" >
+        mul_choice_ck,
+      </if>
+      <if test="fillBlankCk != null" >
+        fill_blank_ck,
+      </if>
+      <if test="judgeCk != null" >
+        judge_ck,
+      </if>
+      <if test="subQuestionCk != null" >
+        sub_question_ck,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseId != null" >
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="singleChoiceNum != null" >
+        #{singleChoiceNum,jdbcType=INTEGER},
+      </if>
+      <if test="singleChoiceScore != null" >
+        #{singleChoiceScore,jdbcType=DOUBLE},
+      </if>
+      <if test="mulChoiceNum != null" >
+        #{mulChoiceNum,jdbcType=INTEGER},
+      </if>
+      <if test="mulChoiceScore != null" >
+        #{mulChoiceScore,jdbcType=DOUBLE},
+      </if>
+      <if test="fillBlankNum != null" >
+        #{fillBlankNum,jdbcType=INTEGER},
+      </if>
+      <if test="fillBlankScore != null" >
+        #{fillBlankScore,jdbcType=DOUBLE},
+      </if>
+      <if test="judgeNum != null" >
+        #{judgeNum,jdbcType=INTEGER},
+      </if>
+      <if test="judgeScore != null" >
+        #{judgeScore,jdbcType=DOUBLE},
+      </if>
+      <if test="subQuestionNum != null" >
+        #{subQuestionNum,jdbcType=INTEGER},
+      </if>
+      <if test="subQuestionScore != null" >
+        #{subQuestionScore,jdbcType=DOUBLE},
+      </if>
+      <if test="paperScore != null" >
+        #{paperScore,jdbcType=INTEGER},
+      </if>
+      <if test="ruleType != null" >
+        #{ruleType,jdbcType=BIGINT},
+      </if>
+      <if test="singleChoiceCk != null" >
+        #{singleChoiceCk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mulChoiceCk != null" >
+        #{mulChoiceCk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="fillBlankCk != null" >
+        #{fillBlankCk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="judgeCk != null" >
+        #{judgeCk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="subQuestionCk != null" >
+        #{subQuestionCk,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jiang.ssm.bean.PaperRuleExample" resultType="java.lang.Integer" >
+    select count(*) from t_paper_rule
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_paper_rule
+    <set >
+      <if test="record.ruleId != null" >
+        rule_id = #{record.ruleId,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseId != null" >
+        course_id = #{record.courseId,jdbcType=INTEGER},
+      </if>
+      <if test="record.singleChoiceNum != null" >
+        single_choice_num = #{record.singleChoiceNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.singleChoiceScore != null" >
+        single_choice_score = #{record.singleChoiceScore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mulChoiceNum != null" >
+        mul_choice_num = #{record.mulChoiceNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.mulChoiceScore != null" >
+        mul_choice_score = #{record.mulChoiceScore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.fillBlankNum != null" >
+        fill_blank_num = #{record.fillBlankNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.fillBlankScore != null" >
+        fill_blank_score = #{record.fillBlankScore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.judgeNum != null" >
+        judge_num = #{record.judgeNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.judgeScore != null" >
+        judge_score = #{record.judgeScore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.subQuestionNum != null" >
+        sub_question_num = #{record.subQuestionNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.subQuestionScore != null" >
+        sub_question_score = #{record.subQuestionScore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.paperScore != null" >
+        paper_score = #{record.paperScore,jdbcType=INTEGER},
+      </if>
+      <if test="record.ruleType != null" >
+        rule_type = #{record.ruleType,jdbcType=BIGINT},
+      </if>
+      <if test="record.singleChoiceCk != null" >
+        single_choice_ck = #{record.singleChoiceCk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.mulChoiceCk != null" >
+        mul_choice_ck = #{record.mulChoiceCk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.fillBlankCk != null" >
+        fill_blank_ck = #{record.fillBlankCk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.judgeCk != null" >
+        judge_ck = #{record.judgeCk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.subQuestionCk != null" >
+        sub_question_ck = #{record.subQuestionCk,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update t_paper_rule
+    set rule_id = #{record.ruleId,jdbcType=INTEGER},
+      course_id = #{record.courseId,jdbcType=INTEGER},
+      single_choice_num = #{record.singleChoiceNum,jdbcType=INTEGER},
+      single_choice_score = #{record.singleChoiceScore,jdbcType=DOUBLE},
+      mul_choice_num = #{record.mulChoiceNum,jdbcType=INTEGER},
+      mul_choice_score = #{record.mulChoiceScore,jdbcType=DOUBLE},
+      fill_blank_num = #{record.fillBlankNum,jdbcType=INTEGER},
+      fill_blank_score = #{record.fillBlankScore,jdbcType=DOUBLE},
+      judge_num = #{record.judgeNum,jdbcType=INTEGER},
+      judge_score = #{record.judgeScore,jdbcType=DOUBLE},
+      sub_question_num = #{record.subQuestionNum,jdbcType=INTEGER},
+      sub_question_score = #{record.subQuestionScore,jdbcType=DOUBLE},
+      paper_score = #{record.paperScore,jdbcType=INTEGER},
+      rule_type = #{record.ruleType,jdbcType=BIGINT},
+      single_choice_ck = #{record.singleChoiceCk,jdbcType=LONGVARCHAR},
+      mul_choice_ck = #{record.mulChoiceCk,jdbcType=LONGVARCHAR},
+      fill_blank_ck = #{record.fillBlankCk,jdbcType=LONGVARCHAR},
+      judge_ck = #{record.judgeCk,jdbcType=LONGVARCHAR},
+      sub_question_ck = #{record.subQuestionCk,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_paper_rule
+    set rule_id = #{record.ruleId,jdbcType=INTEGER},
+      course_id = #{record.courseId,jdbcType=INTEGER},
+      single_choice_num = #{record.singleChoiceNum,jdbcType=INTEGER},
+      single_choice_score = #{record.singleChoiceScore,jdbcType=DOUBLE},
+      mul_choice_num = #{record.mulChoiceNum,jdbcType=INTEGER},
+      mul_choice_score = #{record.mulChoiceScore,jdbcType=DOUBLE},
+      fill_blank_num = #{record.fillBlankNum,jdbcType=INTEGER},
+      fill_blank_score = #{record.fillBlankScore,jdbcType=DOUBLE},
+      judge_num = #{record.judgeNum,jdbcType=INTEGER},
+      judge_score = #{record.judgeScore,jdbcType=DOUBLE},
+      sub_question_num = #{record.subQuestionNum,jdbcType=INTEGER},
+      sub_question_score = #{record.subQuestionScore,jdbcType=DOUBLE},
+      paper_score = #{record.paperScore,jdbcType=INTEGER},
+      rule_type = #{record.ruleType,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiang.ssm.bean.PaperRule" >
+    update t_paper_rule
+    <set >
+      <if test="courseId != null" >
+        course_id = #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="singleChoiceNum != null" >
+        single_choice_num = #{singleChoiceNum,jdbcType=INTEGER},
+      </if>
+      <if test="singleChoiceScore != null" >
+        single_choice_score = #{singleChoiceScore,jdbcType=DOUBLE},
+      </if>
+      <if test="mulChoiceNum != null" >
+        mul_choice_num = #{mulChoiceNum,jdbcType=INTEGER},
+      </if>
+      <if test="mulChoiceScore != null" >
+        mul_choice_score = #{mulChoiceScore,jdbcType=DOUBLE},
+      </if>
+      <if test="fillBlankNum != null" >
+        fill_blank_num = #{fillBlankNum,jdbcType=INTEGER},
+      </if>
+      <if test="fillBlankScore != null" >
+        fill_blank_score = #{fillBlankScore,jdbcType=DOUBLE},
+      </if>
+      <if test="judgeNum != null" >
+        judge_num = #{judgeNum,jdbcType=INTEGER},
+      </if>
+      <if test="judgeScore != null" >
+        judge_score = #{judgeScore,jdbcType=DOUBLE},
+      </if>
+      <if test="subQuestionNum != null" >
+        sub_question_num = #{subQuestionNum,jdbcType=INTEGER},
+      </if>
+      <if test="subQuestionScore != null" >
+        sub_question_score = #{subQuestionScore,jdbcType=DOUBLE},
+      </if>
+      <if test="paperScore != null" >
+        paper_score = #{paperScore,jdbcType=INTEGER},
+      </if>
+      <if test="ruleType != null" >
+        rule_type = #{ruleType,jdbcType=BIGINT},
+      </if>
+      <if test="singleChoiceCk != null" >
+        single_choice_ck = #{singleChoiceCk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mulChoiceCk != null" >
+        mul_choice_ck = #{mulChoiceCk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="fillBlankCk != null" >
+        fill_blank_ck = #{fillBlankCk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="judgeCk != null" >
+        judge_ck = #{judgeCk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="subQuestionCk != null" >
+        sub_question_ck = #{subQuestionCk,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where rule_id = #{ruleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jiang.ssm.bean.PaperRule" >
+    update t_paper_rule
+    set course_id = #{courseId,jdbcType=INTEGER},
+      single_choice_num = #{singleChoiceNum,jdbcType=INTEGER},
+      single_choice_score = #{singleChoiceScore,jdbcType=DOUBLE},
+      mul_choice_num = #{mulChoiceNum,jdbcType=INTEGER},
+      mul_choice_score = #{mulChoiceScore,jdbcType=DOUBLE},
+      fill_blank_num = #{fillBlankNum,jdbcType=INTEGER},
+      fill_blank_score = #{fillBlankScore,jdbcType=DOUBLE},
+      judge_num = #{judgeNum,jdbcType=INTEGER},
+      judge_score = #{judgeScore,jdbcType=DOUBLE},
+      sub_question_num = #{subQuestionNum,jdbcType=INTEGER},
+      sub_question_score = #{subQuestionScore,jdbcType=DOUBLE},
+      paper_score = #{paperScore,jdbcType=INTEGER},
+      rule_type = #{ruleType,jdbcType=BIGINT},
+      single_choice_ck = #{singleChoiceCk,jdbcType=LONGVARCHAR},
+      mul_choice_ck = #{mulChoiceCk,jdbcType=LONGVARCHAR},
+      fill_blank_ck = #{fillBlankCk,jdbcType=LONGVARCHAR},
+      judge_ck = #{judgeCk,jdbcType=LONGVARCHAR},
+      sub_question_ck = #{subQuestionCk,jdbcType=LONGVARCHAR}
+    where rule_id = #{ruleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiang.ssm.bean.PaperRule" >
+    update t_paper_rule
+    set course_id = #{courseId,jdbcType=INTEGER},
+      single_choice_num = #{singleChoiceNum,jdbcType=INTEGER},
+      single_choice_score = #{singleChoiceScore,jdbcType=DOUBLE},
+      mul_choice_num = #{mulChoiceNum,jdbcType=INTEGER},
+      mul_choice_score = #{mulChoiceScore,jdbcType=DOUBLE},
+      fill_blank_num = #{fillBlankNum,jdbcType=INTEGER},
+      fill_blank_score = #{fillBlankScore,jdbcType=DOUBLE},
+      judge_num = #{judgeNum,jdbcType=INTEGER},
+      judge_score = #{judgeScore,jdbcType=DOUBLE},
+      sub_question_num = #{subQuestionNum,jdbcType=INTEGER},
+      sub_question_score = #{subQuestionScore,jdbcType=DOUBLE},
+      paper_score = #{paperScore,jdbcType=INTEGER},
+      rule_type = #{ruleType,jdbcType=BIGINT}
+    where rule_id = #{ruleId,jdbcType=INTEGER}
+  </update>
+</mapper>
