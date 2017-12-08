@@ -15,6 +15,14 @@ public class Teacher implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public Teacher() {
+    }
+
+    public Teacher(String teaAccount, String teaPassword) {
+        this.teaAccount = teaAccount;
+        this.teaPassword = teaPassword;
+    }
+
     public Integer getTeaId() {
         return teaId;
     }

@@ -13,6 +13,14 @@ public class Student implements Serializable {
 
     private Integer stuClass;
 
+    public Student() {
+    }
+
+    public Student(String stuAccount, String stuPassword) {
+        this.stuAccount = stuAccount;
+        this.stuPassword = stuPassword;
+    }
+
     private static final long serialVersionUID = 1L;
 
     public Integer getStuId() {

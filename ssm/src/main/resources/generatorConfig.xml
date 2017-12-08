@@ -68,7 +68,6 @@
             <property name="trimStrings" value="true" />
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table tableName=""></table>
         <!--<table tableName="t_answer" domainObjectName="Answer">-->
             <!--<generatedKey column="answer_id" sqlStatement="MySql" identity="true"/>-->
             <!--<columnOverride column="single_choice_json" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
@@ -100,9 +99,9 @@
         <!--<table tableName="t_course" domainObjectName="Course">-->
             <!--<generatedKey column="course_id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
-        <!--<table tableName="t_class_course" domainObjectName="ClassCourse">-->
-            <!--<generatedKey column="class_course_id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
+        <table tableName="t_class_course" domainObjectName="ClassCourse">
+            <generatedKey column="class_course_id" sqlStatement="MySql" identity="true"/>
+        </table>
         <!--<table tableName="t_exam" domainObjectName="Exam">-->
             <!--<generatedKey column="exam_id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
