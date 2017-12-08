@@ -1,6 +1,8 @@
 package com.jiang.test;
 
+import com.jiang.ssm.bean.Blank;
 import com.jiang.ssm.service.BlankService;
+import com.jiang.ssm.service.CourseService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -14,15 +16,12 @@ import java.util.List;
 public class TestMapper {
     @Resource(name = "blankService")
     private BlankService blankService;
-
+    @Resource(name = "courseService")
+    private CourseService courseService;
     @Test
-    public void testBlankService(){
-        List<Blank> blanks = blankService.getBlank();
-        System.out.println(blanks);
-        Blank blank = new Blank();
-        blank.setBlankTitle("1111");
-        blankService.addBlank(blank);
-        System.out.println(blank.getBlankId());
+    public void courseService(){
+        int i = courseService.deleteCourse(null);
+        System.out.println(i);
     }
 
 }
