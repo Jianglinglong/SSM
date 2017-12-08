@@ -14,7 +14,6 @@ import java.util.List;
 public class SubjectiveServiceImpl implements SubjectiveService {
     @Autowired
     private SubjectiveMapper subjectiveMapper;
-    private int result = 0;
     @Override
     public int addSubjective(Subjective subjective) {
         subjectiveMapper.insert(subjective);
@@ -22,15 +21,15 @@ public class SubjectiveServiceImpl implements SubjectiveService {
     }
 
     @Override
-    public int updateSubjective(Subjective subjective) { ;
-        SubjectiveExample subjectiveExample = new SubjectiveExample();
-        subjectiveExample.createCriteria().andSubIdEqualTo(subjective.getSubId());
-        result = subjectiveMapper.updateByExampleWithBLOBs(subjective,subjectiveExample);
+    public int updateSubjective(Subjective subjective) {
+        int result = 0;
+        result = subjectiveMapper.updateByPrimaryKeySelective(subjective);
         return result;
     }
 
     @Override
     public int deleteSubjective(int subjectiveId) {
+        int result = 0;
         result = subjectiveMapper.deleteByPrimaryKey(subjectiveId);
         return result;
     }
@@ -38,7 +37,7 @@ public class SubjectiveServiceImpl implements SubjectiveService {
     @Override
     public int deleteSubjective(Subjective subjective) {
         SubjectiveExample subjectiveExample = new SubjectiveExample();
-
+        int result = 0;
         result = subjectiveMapper.deleteByExample(subjectiveExample);
         return result;
     }
@@ -51,7 +50,7 @@ public class SubjectiveServiceImpl implements SubjectiveService {
 
     @Override
     public List<Subjective> getSubjective() {
-        List<Subjective> subjectives = subjectiveMapper.selectByExampleWithBLOBs(null);
+        List<Subjective> subjectives = subjectiveMapper.selectByExample(null);
         return subjectives;
     }
 
