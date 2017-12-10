@@ -60,9 +60,8 @@ public class CourseServiceImpl implements CourseService {
         return pageInfo;
     }
     private CourseExample getExample(Course course){
-        CourseExample example= null;
+        CourseExample example= new CourseExample();
         if (course!=null){
-            example = new CourseExample();
             CourseExample.Criteria criteria = example.createCriteria();
             if (course.getCourseId()!=null){
                 criteria.andCourseIdEqualTo(course.getCourseId());

@@ -58,15 +58,34 @@ public class BlankServiceImpl  implements BlankService{
     }
 
     @Override
-    public List<Blank> getBlank() {
-        return blankMapper.selectByExample(null);
+    public List<Blank> getBlank(Blank blank) {
+        return blankMapper.selectByExample(getExample(blank));
     }
 
     @Override
-    public PageInfo getBlank(int page, int pageSize) {
+    public PageInfo getBlank(int page, int pageSize,Blank blank) {
         PageHelper.startPage(page,pageSize);
-        List<Blank> blank = getBlank();
-        PageInfo pageInfo = new PageInfo(blank);
+        List<Blank> blanks = getBlank(blank);
+        PageInfo pageInfo = new PageInfo(blanks);
         return pageInfo;
+    }
+    private BlankExample getExample(Blank blank){
+        BlankExample blankExample =new BlankExample();
+        if (blank!=null){
+            BlankExample.Criteria criteria = blankExample.createCriteria();
+            if (blank.getBlankId()!=null){
+                criteria.andBlankIdEqualTo(blank.getBlankId());
+            }
+            if (blank.getBlankAnswer()!=null){
+                criteria.andBlankAnswerLike("%"+blank.getBlankAnswer()+"%");
+            }
+            if (blank.getBlankTitle()!=null){
+                criteria.andBlankTitleEqualTo("%"+blank.getBlankTitle()+"%");
+            }
+            if (blank.getCourseId()!=null){
+                criteria.andCourseIdEqualTo(blank.getCourseId());
+            }
+        }
+        return  blankExample;
     }
 }

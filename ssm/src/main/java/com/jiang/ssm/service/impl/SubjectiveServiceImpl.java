@@ -36,9 +36,8 @@ public class SubjectiveServiceImpl implements SubjectiveService {
 
     @Override
     public int deleteSubjective(Subjective subjective) {
-        SubjectiveExample subjectiveExample = new SubjectiveExample();
         int result = 0;
-        result = subjectiveMapper.deleteByExample(subjectiveExample);
+        result = subjectiveMapper.deleteByExample(getExample(subjective));
         return result;
     }
 
@@ -49,16 +48,35 @@ public class SubjectiveServiceImpl implements SubjectiveService {
     }
 
     @Override
-    public List<Subjective> getSubjective() {
-        List<Subjective> subjectives = subjectiveMapper.selectByExample(null);
+    public List<Subjective> getSubjective(Subjective subjective) {
+        List<Subjective> subjectives = subjectiveMapper.selectByExample(getExample(subjective));
         return subjectives;
     }
 
     @Override
-    public PageInfo getSubjective(int page, int pageSize) {
+    public PageInfo getSubjective(int page, int pageSize,Subjective subjective) {
         PageHelper.startPage(page,pageSize);
-        List<Subjective> subjective = getSubjective();
-        PageInfo pageInfo = new PageInfo(subjective);
+        List<Subjective> subjectives = getSubjective(subjective);
+        PageInfo pageInfo = new PageInfo(subjectives);
         return pageInfo;
+    }
+    private SubjectiveExample getExample(Subjective subjective){
+        SubjectiveExample subjectiveExample = new SubjectiveExample();
+        if (subjective!=null){
+            SubjectiveExample.Criteria criteria = subjectiveExample.createCriteria();
+            if (subjective.getSubId()!=null){
+                criteria.andSubIdEqualTo(subjective.getSubId());
+            }
+            if (subjective.getCourseId()!=null){
+                criteria.andCourseIdEqualTo(subjective.getCourseId());
+            }
+            if (subjective.getSubAnswer()!=null){
+                criteria.andSubAnswerLike("%"+subjective.getSubAnswer()+"%");
+            }
+            if (subjective.getSubTitle()!=null){
+                criteria.andSubTitleLike("%"+subjective.getSubTitle()+"%");
+            }
+        }
+        return subjectiveExample;
     }
 }

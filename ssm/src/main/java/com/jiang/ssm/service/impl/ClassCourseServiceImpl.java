@@ -53,9 +53,7 @@ public class ClassCourseServiceImpl implements ClassCourseService {
 
     @Override
     public List<ClassCourse> getClassCourse(ClassCourse classCourse) {
-        List<ClassCourse> classCourses = null;
-        ClassCourseExample example = getExample(classCourse);
-        classCourses = classCourseMapper.selectByExample(example);
+        List<ClassCourse> classCourses = classCourseMapper.selectByExample(getExample(classCourse));
         return classCourses;
     }
 
@@ -68,11 +66,11 @@ public class ClassCourseServiceImpl implements ClassCourseService {
     }
 
     private ClassCourseExample getExample(ClassCourse classCourse) {
-        ClassCourseExample example = null;
+        ClassCourseExample example = new ClassCourseExample();
         if (classCourse != null) {
-            example = new ClassCourseExample();
             ClassCourseExample.Criteria criteria = example.createCriteria();
             if (classCourse.getClassCourseId() != null) {
+                criteria.andClassCourseIdEqualTo(classCourse.getClassCourseId());
             }
             if (classCourse.getCourseId() != null) {
                 criteria.andCourseIdEqualTo(classCourse.getCourseId());
