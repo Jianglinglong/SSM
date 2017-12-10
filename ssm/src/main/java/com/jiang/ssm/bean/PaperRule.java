@@ -7,21 +7,31 @@ public class PaperRule implements Serializable {
 
     private Integer courseId;
 
+    private String singleChoiceCheck;
+
     private Integer singleChoiceNum;
 
     private Double singleChoiceScore;
+
+    private String mulChoiceCheck;
 
     private Integer mulChoiceNum;
 
     private Double mulChoiceScore;
 
+    private String fillBlankCheck;
+
     private Integer fillBlankNum;
 
     private Double fillBlankScore;
 
+    private String judgeCheck;
+
     private Integer judgeNum;
 
     private Double judgeScore;
+
+    private String subQuestionCheck;
 
     private Integer subQuestionNum;
 
@@ -30,16 +40,6 @@ public class PaperRule implements Serializable {
     private Integer paperScore;
 
     private Long ruleType;
-
-    private String singleChoiceCk;
-
-    private String mulChoiceCk;
-
-    private String fillBlankCk;
-
-    private String judgeCk;
-
-    private String subQuestionCk;
 
     private static final long serialVersionUID = 1L;
 
@@ -59,6 +59,14 @@ public class PaperRule implements Serializable {
         this.courseId = courseId;
     }
 
+    public String getSingleChoiceCheck() {
+        return singleChoiceCheck;
+    }
+
+    public void setSingleChoiceCheck(String singleChoiceCheck) {
+        this.singleChoiceCheck = singleChoiceCheck == null ? null : singleChoiceCheck.trim();
+    }
+
     public Integer getSingleChoiceNum() {
         return singleChoiceNum;
     }
@@ -73,6 +81,14 @@ public class PaperRule implements Serializable {
 
     public void setSingleChoiceScore(Double singleChoiceScore) {
         this.singleChoiceScore = singleChoiceScore;
+    }
+
+    public String getMulChoiceCheck() {
+        return mulChoiceCheck;
+    }
+
+    public void setMulChoiceCheck(String mulChoiceCheck) {
+        this.mulChoiceCheck = mulChoiceCheck == null ? null : mulChoiceCheck.trim();
     }
 
     public Integer getMulChoiceNum() {
@@ -91,6 +107,14 @@ public class PaperRule implements Serializable {
         this.mulChoiceScore = mulChoiceScore;
     }
 
+    public String getFillBlankCheck() {
+        return fillBlankCheck;
+    }
+
+    public void setFillBlankCheck(String fillBlankCheck) {
+        this.fillBlankCheck = fillBlankCheck == null ? null : fillBlankCheck.trim();
+    }
+
     public Integer getFillBlankNum() {
         return fillBlankNum;
     }
@@ -107,6 +131,14 @@ public class PaperRule implements Serializable {
         this.fillBlankScore = fillBlankScore;
     }
 
+    public String getJudgeCheck() {
+        return judgeCheck;
+    }
+
+    public void setJudgeCheck(String judgeCheck) {
+        this.judgeCheck = judgeCheck == null ? null : judgeCheck.trim();
+    }
+
     public Integer getJudgeNum() {
         return judgeNum;
     }
@@ -121,6 +153,14 @@ public class PaperRule implements Serializable {
 
     public void setJudgeScore(Double judgeScore) {
         this.judgeScore = judgeScore;
+    }
+
+    public String getSubQuestionCheck() {
+        return subQuestionCheck;
+    }
+
+    public void setSubQuestionCheck(String subQuestionCheck) {
+        this.subQuestionCheck = subQuestionCheck == null ? null : subQuestionCheck.trim();
     }
 
     public Integer getSubQuestionNum() {
@@ -153,45 +193,5 @@ public class PaperRule implements Serializable {
 
     public void setRuleType(Long ruleType) {
         this.ruleType = ruleType;
-    }
-
-    public String getSingleChoiceCk() {
-        return singleChoiceCk;
-    }
-
-    public void setSingleChoiceCk(String singleChoiceCk) {
-        this.singleChoiceCk = singleChoiceCk == null ? null : singleChoiceCk.trim();
-    }
-
-    public String getMulChoiceCk() {
-        return mulChoiceCk;
-    }
-
-    public void setMulChoiceCk(String mulChoiceCk) {
-        this.mulChoiceCk = mulChoiceCk == null ? null : mulChoiceCk.trim();
-    }
-
-    public String getFillBlankCk() {
-        return fillBlankCk;
-    }
-
-    public void setFillBlankCk(String fillBlankCk) {
-        this.fillBlankCk = fillBlankCk == null ? null : fillBlankCk.trim();
-    }
-
-    public String getJudgeCk() {
-        return judgeCk;
-    }
-
-    public void setJudgeCk(String judgeCk) {
-        this.judgeCk = judgeCk == null ? null : judgeCk.trim();
-    }
-
-    public String getSubQuestionCk() {
-        return subQuestionCk;
-    }
-
-    public void setSubQuestionCk(String subQuestionCk) {
-        this.subQuestionCk = subQuestionCk == null ? null : subQuestionCk.trim();
     }
 }

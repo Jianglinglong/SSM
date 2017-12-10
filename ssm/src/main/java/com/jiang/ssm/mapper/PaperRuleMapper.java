@@ -16,21 +16,15 @@ public interface PaperRuleMapper {
 
     int insertSelective(PaperRule record);
 
-    List<PaperRule> selectByExampleWithBLOBs(PaperRuleExample example);
-
     List<PaperRule> selectByExample(PaperRuleExample example);
 
     PaperRule selectByPrimaryKey(Integer ruleId);
 
     int updateByExampleSelective(@Param("record") PaperRule record, @Param("example") PaperRuleExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") PaperRule record, @Param("example") PaperRuleExample example);
-
     int updateByExample(@Param("record") PaperRule record, @Param("example") PaperRuleExample example);
 
     int updateByPrimaryKeySelective(PaperRule record);
-
-    int updateByPrimaryKeyWithBLOBs(PaperRule record);
 
     int updateByPrimaryKey(PaperRule record);
 }

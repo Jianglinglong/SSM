@@ -224,6 +224,76 @@ public class PaperRuleExample {
             return (Criteria) this;
         }
 
+        public Criteria andSingleChoiceCheckIsNull() {
+            addCriterion("single_choice_check is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSingleChoiceCheckIsNotNull() {
+            addCriterion("single_choice_check is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSingleChoiceCheckEqualTo(String value) {
+            addCriterion("single_choice_check =", value, "singleChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSingleChoiceCheckNotEqualTo(String value) {
+            addCriterion("single_choice_check <>", value, "singleChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSingleChoiceCheckGreaterThan(String value) {
+            addCriterion("single_choice_check >", value, "singleChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSingleChoiceCheckGreaterThanOrEqualTo(String value) {
+            addCriterion("single_choice_check >=", value, "singleChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSingleChoiceCheckLessThan(String value) {
+            addCriterion("single_choice_check <", value, "singleChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSingleChoiceCheckLessThanOrEqualTo(String value) {
+            addCriterion("single_choice_check <=", value, "singleChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSingleChoiceCheckLike(String value) {
+            addCriterion("single_choice_check like", value, "singleChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSingleChoiceCheckNotLike(String value) {
+            addCriterion("single_choice_check not like", value, "singleChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSingleChoiceCheckIn(List<String> values) {
+            addCriterion("single_choice_check in", values, "singleChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSingleChoiceCheckNotIn(List<String> values) {
+            addCriterion("single_choice_check not in", values, "singleChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSingleChoiceCheckBetween(String value1, String value2) {
+            addCriterion("single_choice_check between", value1, value2, "singleChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSingleChoiceCheckNotBetween(String value1, String value2) {
+            addCriterion("single_choice_check not between", value1, value2, "singleChoiceCheck");
+            return (Criteria) this;
+        }
+
         public Criteria andSingleChoiceNumIsNull() {
             addCriterion("single_choice_num is null");
             return (Criteria) this;
@@ -341,6 +411,76 @@ public class PaperRuleExample {
 
         public Criteria andSingleChoiceScoreNotBetween(Double value1, Double value2) {
             addCriterion("single_choice_score not between", value1, value2, "singleChoiceScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andMulChoiceCheckIsNull() {
+            addCriterion("mul_choice_check is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMulChoiceCheckIsNotNull() {
+            addCriterion("mul_choice_check is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMulChoiceCheckEqualTo(String value) {
+            addCriterion("mul_choice_check =", value, "mulChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andMulChoiceCheckNotEqualTo(String value) {
+            addCriterion("mul_choice_check <>", value, "mulChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andMulChoiceCheckGreaterThan(String value) {
+            addCriterion("mul_choice_check >", value, "mulChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andMulChoiceCheckGreaterThanOrEqualTo(String value) {
+            addCriterion("mul_choice_check >=", value, "mulChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andMulChoiceCheckLessThan(String value) {
+            addCriterion("mul_choice_check <", value, "mulChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andMulChoiceCheckLessThanOrEqualTo(String value) {
+            addCriterion("mul_choice_check <=", value, "mulChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andMulChoiceCheckLike(String value) {
+            addCriterion("mul_choice_check like", value, "mulChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andMulChoiceCheckNotLike(String value) {
+            addCriterion("mul_choice_check not like", value, "mulChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andMulChoiceCheckIn(List<String> values) {
+            addCriterion("mul_choice_check in", values, "mulChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andMulChoiceCheckNotIn(List<String> values) {
+            addCriterion("mul_choice_check not in", values, "mulChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andMulChoiceCheckBetween(String value1, String value2) {
+            addCriterion("mul_choice_check between", value1, value2, "mulChoiceCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andMulChoiceCheckNotBetween(String value1, String value2) {
+            addCriterion("mul_choice_check not between", value1, value2, "mulChoiceCheck");
             return (Criteria) this;
         }
 
@@ -464,6 +604,76 @@ public class PaperRuleExample {
             return (Criteria) this;
         }
 
+        public Criteria andFillBlankCheckIsNull() {
+            addCriterion("fill_blank_check is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillBlankCheckIsNotNull() {
+            addCriterion("fill_blank_check is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillBlankCheckEqualTo(String value) {
+            addCriterion("fill_blank_check =", value, "fillBlankCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillBlankCheckNotEqualTo(String value) {
+            addCriterion("fill_blank_check <>", value, "fillBlankCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillBlankCheckGreaterThan(String value) {
+            addCriterion("fill_blank_check >", value, "fillBlankCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillBlankCheckGreaterThanOrEqualTo(String value) {
+            addCriterion("fill_blank_check >=", value, "fillBlankCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillBlankCheckLessThan(String value) {
+            addCriterion("fill_blank_check <", value, "fillBlankCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillBlankCheckLessThanOrEqualTo(String value) {
+            addCriterion("fill_blank_check <=", value, "fillBlankCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillBlankCheckLike(String value) {
+            addCriterion("fill_blank_check like", value, "fillBlankCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillBlankCheckNotLike(String value) {
+            addCriterion("fill_blank_check not like", value, "fillBlankCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillBlankCheckIn(List<String> values) {
+            addCriterion("fill_blank_check in", values, "fillBlankCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillBlankCheckNotIn(List<String> values) {
+            addCriterion("fill_blank_check not in", values, "fillBlankCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillBlankCheckBetween(String value1, String value2) {
+            addCriterion("fill_blank_check between", value1, value2, "fillBlankCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillBlankCheckNotBetween(String value1, String value2) {
+            addCriterion("fill_blank_check not between", value1, value2, "fillBlankCheck");
+            return (Criteria) this;
+        }
+
         public Criteria andFillBlankNumIsNull() {
             addCriterion("fill_blank_num is null");
             return (Criteria) this;
@@ -584,6 +794,76 @@ public class PaperRuleExample {
             return (Criteria) this;
         }
 
+        public Criteria andJudgeCheckIsNull() {
+            addCriterion("judge_check is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJudgeCheckIsNotNull() {
+            addCriterion("judge_check is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJudgeCheckEqualTo(String value) {
+            addCriterion("judge_check =", value, "judgeCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andJudgeCheckNotEqualTo(String value) {
+            addCriterion("judge_check <>", value, "judgeCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andJudgeCheckGreaterThan(String value) {
+            addCriterion("judge_check >", value, "judgeCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andJudgeCheckGreaterThanOrEqualTo(String value) {
+            addCriterion("judge_check >=", value, "judgeCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andJudgeCheckLessThan(String value) {
+            addCriterion("judge_check <", value, "judgeCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andJudgeCheckLessThanOrEqualTo(String value) {
+            addCriterion("judge_check <=", value, "judgeCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andJudgeCheckLike(String value) {
+            addCriterion("judge_check like", value, "judgeCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andJudgeCheckNotLike(String value) {
+            addCriterion("judge_check not like", value, "judgeCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andJudgeCheckIn(List<String> values) {
+            addCriterion("judge_check in", values, "judgeCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andJudgeCheckNotIn(List<String> values) {
+            addCriterion("judge_check not in", values, "judgeCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andJudgeCheckBetween(String value1, String value2) {
+            addCriterion("judge_check between", value1, value2, "judgeCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andJudgeCheckNotBetween(String value1, String value2) {
+            addCriterion("judge_check not between", value1, value2, "judgeCheck");
+            return (Criteria) this;
+        }
+
         public Criteria andJudgeNumIsNull() {
             addCriterion("judge_num is null");
             return (Criteria) this;
@@ -701,6 +981,76 @@ public class PaperRuleExample {
 
         public Criteria andJudgeScoreNotBetween(Double value1, Double value2) {
             addCriterion("judge_score not between", value1, value2, "judgeScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubQuestionCheckIsNull() {
+            addCriterion("sub_question_check is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubQuestionCheckIsNotNull() {
+            addCriterion("sub_question_check is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubQuestionCheckEqualTo(String value) {
+            addCriterion("sub_question_check =", value, "subQuestionCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubQuestionCheckNotEqualTo(String value) {
+            addCriterion("sub_question_check <>", value, "subQuestionCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubQuestionCheckGreaterThan(String value) {
+            addCriterion("sub_question_check >", value, "subQuestionCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubQuestionCheckGreaterThanOrEqualTo(String value) {
+            addCriterion("sub_question_check >=", value, "subQuestionCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubQuestionCheckLessThan(String value) {
+            addCriterion("sub_question_check <", value, "subQuestionCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubQuestionCheckLessThanOrEqualTo(String value) {
+            addCriterion("sub_question_check <=", value, "subQuestionCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubQuestionCheckLike(String value) {
+            addCriterion("sub_question_check like", value, "subQuestionCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubQuestionCheckNotLike(String value) {
+            addCriterion("sub_question_check not like", value, "subQuestionCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubQuestionCheckIn(List<String> values) {
+            addCriterion("sub_question_check in", values, "subQuestionCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubQuestionCheckNotIn(List<String> values) {
+            addCriterion("sub_question_check not in", values, "subQuestionCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubQuestionCheckBetween(String value1, String value2) {
+            addCriterion("sub_question_check between", value1, value2, "subQuestionCheck");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubQuestionCheckNotBetween(String value1, String value2) {
+            addCriterion("sub_question_check not between", value1, value2, "subQuestionCheck");
             return (Criteria) this;
         }
 
