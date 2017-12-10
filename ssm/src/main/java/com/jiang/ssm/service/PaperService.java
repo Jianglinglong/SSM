@@ -12,6 +12,6 @@ public interface PaperService {
     int deletePaper(int paperId);
 
     Paper getPaper(int paperId);
-    List<Paper>getPaper();
-    PageInfo<Paper> getPaper(int page ,int pageSize);
+    List<Paper>getPaper(Paper paper);
+    PageInfo<Paper> getPaper(int page ,int pageSize,Paper paper);
 }

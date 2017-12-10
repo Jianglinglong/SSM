@@ -12,6 +12,6 @@ public interface PaperRuleService {
     int deletePaperRule(int paperRuleId);
 
     PaperRule getPaperRule(int paperRuleId);
-    List<PaperRule> getPaperRule();
-    PageInfo getPaperRule(int page,int pageSize);
+    List<PaperRule> getPaperRule(PaperRule paperRule);
+    PageInfo getPaperRule(int page,int pageSize,PaperRule paperRule);
 }
