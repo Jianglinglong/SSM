@@ -12,6 +12,6 @@ public interface RightService {
     int deleteRight(int rightId);
 
     Right getRight(int rightId);
-    List<Right> getRight();
-    PageInfo<Right> getRIght(int page, int pageSize);
+    List<Right> getRight(Right right);
+    PageInfo<Right> getRight(int page, int pageSize,Right right);
 }
