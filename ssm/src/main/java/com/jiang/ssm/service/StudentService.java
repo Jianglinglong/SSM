@@ -1,6 +1,9 @@
 package com.jiang.ssm.service;
 
+import com.github.pagehelper.PageInfo;
 import com.jiang.ssm.bean.Student;
+
+import java.util.List;
 
 public interface StudentService {
     /**
@@ -31,4 +34,8 @@ public interface StudentService {
      * @return
      */
     int deleteStudent(Student stu);
+
+    Student getStudent(int stuId);
+    List<Student> getStudent(Student student);
+    PageInfo getStudent(int page,int pageSize,Student student);
 }

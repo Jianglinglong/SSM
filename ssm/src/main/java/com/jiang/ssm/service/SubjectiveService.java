@@ -12,6 +12,6 @@ public interface SubjectiveService {
     int deleteSubjective(Subjective subjective);
 
     Subjective getSubjective(int subjectiveId);
-    List<Subjective> getSubjective();
-    PageInfo getSubjective(int page,int pageSize);
+    List<Subjective> getSubjective(Subjective subjective);
+    PageInfo getSubjective(int page,int pageSize,Subjective subjective);
 }

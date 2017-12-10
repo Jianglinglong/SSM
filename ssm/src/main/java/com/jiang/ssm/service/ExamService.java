@@ -12,6 +12,6 @@ public interface ExamService {
     int deleteExam(int examId);
 
     Exam getExam(int examId);
-    List<Exam> getExam();
-    PageInfo getExam(int page,int pageSize);
+    List<Exam> getExam(Exam exam);
+    PageInfo getExam(int page,int pageSize,Exam exam);
 }

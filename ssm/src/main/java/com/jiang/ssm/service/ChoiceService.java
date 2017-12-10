@@ -12,6 +12,6 @@ public interface ChoiceService {
     int deleteChoice(Choice choice);
 
     Choice getChoice(int choiceId);
-    List<Choice> getChoice();
-    PageInfo getChoice(int page,int pageSize);
+    List<Choice> getChoice(Choice choice);
+    PageInfo getChoice(int page,int pageSize,Choice choice);
 }

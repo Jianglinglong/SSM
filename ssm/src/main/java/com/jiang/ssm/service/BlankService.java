@@ -12,6 +12,6 @@ public interface BlankService {
     int deleteBlank(Blank blank);
 
     Blank getBlank(int blankId);
-    List<Blank> getBlank();
-    PageInfo getBlank(int page,int pageSize);
+    List<Blank> getBlank(Blank blank);
+    PageInfo getBlank(int page,int pageSize,Blank blank);
 }
