@@ -1,6 +1,7 @@
 package com.jiang.test;
 
 import com.jiang.ssm.bean.Blank;
+import com.jiang.ssm.bean.Course;
 import com.jiang.ssm.service.BlankService;
 import com.jiang.ssm.service.CourseService;
 import org.junit.Test;
@@ -20,8 +21,10 @@ public class TestMapper {
     private CourseService courseService;
     @Test
     public void courseService(){
-        int i = courseService.deleteCourse(null);
-        System.out.println(i);
+        Course course = new Course();
+        course.setCourseName("Java");
+        List<Course> courses = courseService.getCourse(course);
+        System.out.println(courses);
     }
 
 }

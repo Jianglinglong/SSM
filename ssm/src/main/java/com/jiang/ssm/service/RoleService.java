@@ -12,6 +12,6 @@ public interface RoleService {
     int deleteRole(int roleId);
 
     Role getRole(int roleId);
-    List<Role> getRole();
-    PageInfo<Role> getRole(int page,int pageSize);
+    List<Role> getRole(Role role);
+    PageInfo<Role> getRole(int page,int pageSize,Role role);
 }

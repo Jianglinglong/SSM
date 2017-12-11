@@ -12,6 +12,6 @@ public interface RoleRightService {
     int deleteRoleRight(int roleRightId);
 
     RoleRight getRoleRight(int roleRightId);
-    List<RoleRight> getRoleRight();
-    PageInfo<RoleRight> getRoleRight(int page , int pageSize);
+    List<RoleRight> getRoleRight(RoleRight roleRight);
+    PageInfo<RoleRight> getRoleRight(int page , int pageSize,RoleRight roleRight);
 }
