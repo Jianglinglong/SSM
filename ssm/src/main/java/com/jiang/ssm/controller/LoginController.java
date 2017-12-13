@@ -24,7 +24,7 @@ public class LoginController {
     public String login(UserInfo userInfo, HttpSession session) {
         boolean login = false;
         Object u = null;
-        String msg = "NO";
+        String msg = null;
         String account = userInfo.getAccount();
         String password = userInfo.getPassword();
         switch (userInfo.getUser()) {
