@@ -11,12 +11,16 @@
 ">
     <context:component-scan base-package="com.jiang.ssm.controller"/>
     <context:annotation-config/>
+    <!-- if you use annotation you must configure following setting -->
     <mvc:annotation-driven />
+    <mvc:resources mapping="/**/*.css" location="/"/>
+    <mvc:resources mapping="/**/*.js" location="/"/>
+    <mvc:resources mapping="/**/image*/**" location="/"/>
     <!-- 配置拦截器 -->
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping  path="/**"/>
-            <mvc:exclude-mapping path="/login.jsp"/>
+            <!--<mvc:exclude-mapping path="/login/*" />-->
             <bean class="com.jiang.ssm.interceptors.LoginInterceptor" id="loginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>

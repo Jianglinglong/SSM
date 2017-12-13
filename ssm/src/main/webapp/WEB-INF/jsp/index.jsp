@@ -31,11 +31,11 @@
     </div>
 <script type="text/javascript">
     $(function () {
-        $.get('${basePath}/home/right.do',function(data){
+        $.get('${basePath}/home/right',function(data){
             for (var i = 0 ; i < data.length ; i ++){
                 var menu = data[i];
                 if (menu.parentId!=100001){
-                    var treeNode = "<li><a rel='"+menu.rightUrl+"'><span class='tree-title'>"+menu.rightName+"</span></a></li>";
+                    var treeNode = "<li><a rel='${basePath}/"+menu.rightUrl+"'><span class='tree-title'>"+menu.rightName+"</span></a></li>";
                     $("#"+menu.parentId).append(treeNode);
                 }else {
                     var div = "<div title='" + menu.rightName + "'><ul class='tree righttree' id='" + menu.rightId + "' ><ul></div>";
@@ -48,11 +48,16 @@
             $(".righttree").tree({
                 onClick:function (node) {
                     var rel =$(node.target).find('a').attr('rel');
-                    $("#context").tabs('add',{
-                        title:node.text,
-                        closable:true,
-                        href:rel
-                    })
+                    var exists = $("#context").tabs('exists',node.text);
+                    if (exists){
+                        $("#context").tabs('select',node.text);
+                    }else {
+                        $("#context").tabs('add',{
+                            title:node.text,
+                            closable:true,
+                            href:rel
+                        });
+                    }
                 }
             });
         });

@@ -51,7 +51,7 @@
 </head>
 <body>
 <div class="login_box">
-    <form method="post" id="login" action="${basePath}/login">
+    <form method="post" id="login" action="${basePath}/login/">
         <div class="in_text">
             <span class="icon"><i class="iconfont">&#xe63b;</i></span>
             <input type="text" name="account" id="account" class="in_box" placeholder="用户名"/>

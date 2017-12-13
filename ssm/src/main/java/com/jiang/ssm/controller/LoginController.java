@@ -6,6 +6,7 @@ import com.jiang.ssm.entity.UserInfo;
 import com.jiang.ssm.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,7 +20,7 @@ public class LoginController {
     @Resource(name = "userService")
     private UserService userService;
 
-    @RequestMapping("/login")
+    @RequestMapping(value = "/",method = RequestMethod.POST)
     @ResponseBody
     public String login(UserInfo userInfo, HttpSession session) {
         boolean login = false;
@@ -42,5 +43,11 @@ public class LoginController {
             msg="OK";
         }
         return msg;
+    }
+    @RequestMapping(value = "/",method = RequestMethod.GET)
+    public ModelAndView login(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login");
+        return modelAndView;
     }
 }

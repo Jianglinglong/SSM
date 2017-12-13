@@ -12,7 +12,6 @@ $(function () {
 var times = false;
 function login() {
     $("#login").form('submit', {
-        url: "login/login.do",
         onSubmit: function () {
             var ra = $("input[type='radio']:checked").val();
             if (ra == null) {

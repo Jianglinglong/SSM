@@ -6,6 +6,7 @@ import com.jiang.ssm.service.RightService;
 import com.jiang.ssm.service.RoleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,7 +27,7 @@ public class HomeController {
         mv.setViewName("index");
         return mv;
     }
-    @RequestMapping("right")
+    @RequestMapping(value = "right",method = RequestMethod.GET)
     @ResponseBody
     public List<Right> getRights(HttpSession session){
         return rightService.getRight(null);
