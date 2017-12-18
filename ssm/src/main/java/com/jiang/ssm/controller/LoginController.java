@@ -20,7 +20,7 @@ public class LoginController {
     @Resource(name = "userService")
     private UserService userService;
 
-    @RequestMapping(value = "/",method = RequestMethod.POST)
+    @RequestMapping(value = "",method = RequestMethod.POST)
     @ResponseBody
     public String login(UserInfo userInfo, HttpSession session) {
         boolean login = false;
@@ -44,7 +44,7 @@ public class LoginController {
         }
         return msg;
     }
-    @RequestMapping(value = "/",method = RequestMethod.GET)
+    @RequestMapping(value = "",method = RequestMethod.GET)
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");

@@ -10,7 +10,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String requestURI = request.getRequestURI();
-        if (requestURI.contains("login")|| requestURI.endsWith("js") || requestURI.endsWith("css") || requestURI.contains("image")) {
+        if (requestURI.contains("login")|| requestURI.contains("js") || requestURI.endsWith("css") || requestURI.contains("image")) {
             return true;
         }
         Object tea = request.getSession().getAttribute("tea");
@@ -24,7 +24,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             return true;
         }
         request.getSession().setAttribute("last",handler);
-        response.sendRedirect(request.getContextPath()+"/login.jsp");
+        response.sendRedirect(request.getContextPath()+"/login");
         return false;
     }
 

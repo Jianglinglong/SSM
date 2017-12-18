@@ -50,6 +50,7 @@
                     var rel =$(node.target).find('a').attr('rel');
                     var exists = $("#context").tabs('exists',node.text);
                     if (exists){
+//                        $("#context").panel('refresh');
                         $("#context").tabs('select',node.text);
                     }else {
                         $("#context").tabs('add',{

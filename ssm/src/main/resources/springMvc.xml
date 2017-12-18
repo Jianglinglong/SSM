@@ -16,11 +16,12 @@
     <mvc:resources mapping="/**/*.css" location="/"/>
     <mvc:resources mapping="/**/*.js" location="/"/>
     <mvc:resources mapping="/**/image*/**" location="/"/>
+    <mvc:resources mapping="/**/icon*/**" location="/"/>
     <!-- 配置拦截器 -->
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping  path="/**"/>
-            <!--<mvc:exclude-mapping path="/login/*" />-->
+            <mvc:exclude-mapping path="/login/*" />
             <bean class="com.jiang.ssm.interceptors.LoginInterceptor" id="loginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>

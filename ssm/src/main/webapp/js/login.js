@@ -21,7 +21,7 @@ function login() {
         },
         success: function (data) {
             if (data == "OK") {
-                window.location.href = "home/index.do";
+                window.location.href = "home/index";
                 return false;
             }
             $.messager.alert('确认', '账号或密码错误','info');

@@ -32,4 +32,8 @@ public class HomeController {
     public List<Right> getRights(HttpSession session){
         return rightService.getRight(null);
     }
+    @RequestMapping(value = "student",method = RequestMethod.GET)
+    public String showStudentPage(){
+        return "user/student";
+    }
 }
